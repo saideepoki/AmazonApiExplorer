@@ -4,9 +4,12 @@ import router from './routes/index.js'; // importing all the routes
 // API application
 const app = express();
 const PORT = process.env.PORT || 8000;
+// including the database
+const db = import('./config/mongoose.js');
 const apiKey = "f28d6e74c69c1ded336df61bd2cb39f9"; // API key provided to authenticate my API's request to the Scraper API service
 // accessing services from scrapeAPi using our API key and enablin autparse to automatically parse the data in structured format
 export const baseUrl = `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
+
 
 // middlewares
 app.use(express.json()); // parses json input
@@ -24,5 +27,7 @@ app.listen(PORT, (err) => {
 
 // exporting baseUrl
 // export default baseUrl;
+export {db};
+
 
 
